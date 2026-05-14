@@ -16,6 +16,13 @@ public class Pusher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Z軸の往復移動
+        float z = Mathf.Sin(Time.time * speed) * movePower;
         
+        //自身のローカル座標の位置を最初の位置情報にｚ(Sin波の変動値)を加算して返す
+        // this.transform.localPosition 
+        //↑このコードがアタッチ(入っている)されているオブジェクトのローカル座標の情報
+        this.transform.localPosition = startPosition + new Vector3(0, 0, z);
+
     }
 }
