@@ -7,6 +7,7 @@ public class StageOut : MonoBehaviour
     //２．変数Scoreはint型かつprivateであること
     //３．オブジェクトがすり抜けたら(OnTriggerEnterが呼ばれたら)変数Scoreに1を加算する
     //４．加算後の変数ScoreをDebug.Logでコンソール上に出力する
+    private int Score = 0;
 
     void OnTriggerEnter(Collider other)
     {
@@ -17,5 +18,7 @@ public class StageOut : MonoBehaviour
         //Destry(破壊したいオブジェクト)
         //オブジェクトが使用しているメモリの開放(ガベージコレクション)と描画情報の破棄
         Destroy(other.gameObject);
+        Score = Score + 1;
+        Debug.Log($"スコアが{Score}に増えました");
     }
 }
