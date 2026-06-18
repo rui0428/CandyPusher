@@ -1,24 +1,27 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageOut : MonoBehaviour
 {
-    //—vŒ’è‹`FStageOutƒNƒ‰ƒX‚Ì’†‚É•Ï”Score‚ðì¬AƒIƒuƒWƒFƒNƒg‚ª‚·‚è”²‚¯‚½‚çScore‚ð1‰ÁŽZ‚·‚é
-    //‚PDStageOutƒNƒ‰ƒX‚Ì’†‚É•Ï”Score‚ðì¬
-    //‚QD•Ï”Score‚ÍintŒ^‚©‚Âprivate‚Å‚ ‚é‚±‚Æ
-    //‚RDƒIƒuƒWƒFƒNƒg‚ª‚·‚è”²‚¯‚½‚ç(OnTriggerEnter‚ªŒÄ‚Î‚ê‚½‚ç)•Ï”Score‚É1‚ð‰ÁŽZ‚·‚é
-    //‚SD‰ÁŽZŒã‚Ì•Ï”Score‚ðDebug.Log‚ÅƒRƒ“ƒ\[ƒ‹ã‚Éo—Í‚·‚é
-    private int Score = 0;
+    //ï¿½vï¿½ï¿½ï¿½ï¿½`ï¿½FStageOutï¿½Nï¿½ï¿½ï¿½Xï¿½Ì’ï¿½ï¿½É•Ïï¿½Scoreï¿½ï¿½ï¿½ì¬ï¿½Aï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½è”²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Scoreï¿½ï¿½1ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ï¿½
+    //ï¿½Pï¿½DStageOutï¿½Nï¿½ï¿½ï¿½Xï¿½Ì’ï¿½ï¿½É•Ïï¿½Scoreï¿½ï¿½ï¿½ì¬
+    //ï¿½Qï¿½Dï¿½Ïï¿½Scoreï¿½ï¿½intï¿½^ï¿½ï¿½ï¿½ï¿½privateï¿½Å‚ï¿½ï¿½é‚±ï¿½ï¿½
+    //ï¿½Rï¿½Dï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½è”²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(OnTriggerEnterï¿½ï¿½ï¿½Ä‚Î‚ê‚½ï¿½ï¿½)ï¿½Ïï¿½Scoreï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ï¿½
+    //ï¿½Sï¿½Dï¿½ï¿½ï¿½Zï¿½ï¿½Ì•Ïï¿½Scoreï¿½ï¿½Debug.Logï¿½ÅƒRï¿½ï¿½ï¿½\ï¿½[ï¿½ï¿½ï¿½ï¿½Éoï¿½Í‚ï¿½ï¿½ï¿½
+    private int Score;
+    public Text scoreText;
 
     void OnTriggerEnter(Collider other)
     {
-        //•Ï”–¼other‚Æ‚ÍH
-        //A,‚·‚è”²‚¯‚½‘ŠŽè‚ÌƒRƒ‰ƒCƒ_[î•ñ
-        Debug.Log($"{other.name}‚ª‚·‚è”²‚¯‚Ü‚µ‚½B");
-        //DestroyŠÖ”
-        //Destry(”j‰ó‚µ‚½‚¢ƒIƒuƒWƒFƒNƒg)
-        //ƒIƒuƒWƒFƒNƒg‚ªŽg—p‚µ‚Ä‚¢‚éƒƒ‚ƒŠ‚ÌŠJ•ú(ƒKƒx[ƒWƒRƒŒƒNƒVƒ‡ƒ“)‚Æ•`‰æî•ñ‚Ì”jŠü
+        //ï¿½Ïï¿½ï¿½ï¿½otherï¿½Æ‚ÍH
+        //A,ï¿½ï¿½ï¿½è”²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒRï¿½ï¿½ï¿½Cï¿½_ï¿½[ï¿½ï¿½ï¿½
+        Debug.Log($"{other.name}ãŒã™ã‚ŠæŠœã‘ã¾ã—ãŸ");
+        //Destroyï¿½Öï¿½
+        //Destry(ï¿½jï¿½ó‚µ‚ï¿½ï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g)
+        //ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½Ä‚ï¿½ï¿½éƒï¿½ï¿½ï¿½ï¿½ï¿½ÌŠJï¿½ï¿½(ï¿½Kï¿½xï¿½[ï¿½Wï¿½Rï¿½ï¿½ï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½)ï¿½Æ•`ï¿½ï¿½ï¿½ï¿½Ì”jï¿½ï¿½
         Destroy(other.gameObject);
         Score = Score + 1;
-        Debug.Log($"ƒXƒRƒA‚ª{Score}‚É‘‚¦‚Ü‚µ‚½");
+        Debug.Log($"ã‚¹ã‚³ã‚¢ãŒ{Score}ã«å¢—åŠ ã—ã¾ã—ãŸ");
+        scoreText.text = $"Score:{Score}";
     }
 }
