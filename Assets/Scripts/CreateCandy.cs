@@ -40,6 +40,11 @@ public class CreateCandy : MonoBehaviour
             GameObject InstantiatedCandy = Instantiate(candyPrefab);
             // 生成したオブジェクトの位置をこのスクリプトがアタッチされているオブジェクトと同じに変更
             InstantiatedCandy.transform.position = this.transform.position;
+
+            // Debug Logを使い、逐一状況を確認できる状態にする
+            Debug.Log("秒数が経過");
+
+
         }
     }
 }
