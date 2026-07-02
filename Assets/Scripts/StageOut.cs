@@ -10,6 +10,8 @@ public class StageOut : MonoBehaviour
     //�S�D���Z��̕ϐ�Score��Debug.Log�ŃR���\�[����ɏo�͂���
     private int Score;
     public Text scoreText;
+    // TextMeshProをコード上から取り扱う場合は、TextMeshProUGUI型が必要
+    public TMPro.TextMeshProUGUI scoreTextTMP;
 
     void OnTriggerEnter(Collider other)
     {
@@ -22,6 +24,6 @@ public class StageOut : MonoBehaviour
         Destroy(other.gameObject);
         Score = Score + 1;
         Debug.Log($"スコアが{Score}に増加しました");
-        scoreText.text = $"Score:{Score}";
+        scoreTextTMP.text = $"Score:{Score}";
     }
 }
