@@ -13,8 +13,11 @@ public class StageOut : MonoBehaviour
     // TextMeshProをコード上から取り扱う場合は、TextMeshProUGUI型が必要
     public TMPro.TextMeshProUGUI scoreTextTMP;
 
+    public AudioManager audioManager;
+
     void OnTriggerEnter(Collider other)
     {
+        audioManager.PlaySE();
         //�ϐ���other�Ƃ́H
         //A,���蔲��������̃R���C�_�[���
         Debug.Log($"{other.name}がすり抜けました");

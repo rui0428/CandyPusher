@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 // InputSystemを使用するのでusing UnityEngine.InputSystemを追加
 using UnityEngine.InputSystem;
@@ -6,7 +7,8 @@ using UnityEngine.InputSystem;
 public class CreateCandy : MonoBehaviour
 {
     public float speed = 1f;
-    public float movepower = 5f;
+    public float movepower = 7f;
+    public float Timer = 0f;
     private Vector3 startPosition;
     public Rigidbody InstantiatedCandy;
     // スペースキーが押されたら、CandyPrefabを生成する
@@ -39,12 +41,31 @@ public class CreateCandy : MonoBehaviour
             // 変数InstantiateCandyを定義 初期値を生成したオブジェクトに設定
             GameObject InstantiatedCandy = Instantiate(candyPrefab);
             // 生成したオブジェクトの位置をこのスクリプトがアタッチされているオブジェクトと同じに変更
+            InstantiatedCandy.transform.position = this.transform.position;            
+        }
+        Timer += Time.deltaTime;
+        if(Timer>=1f)
+        {
+            GameObject InstantiatedCandy = Instantiate(candyPrefab);
             InstantiatedCandy.transform.position = this.transform.position;
-
-            // Debug Logを使い、逐一状況を確認できる状態にする
+            // Debug Logを使い、逐一状況を確認できる状態にする        
             Debug.Log("秒数が経過");
-
-
+            Timer = 0;
         }
     }
 }
+//一秒間に右側に1f動かしたい(右方向 → xの値を加算)
+//代入先(vector3:(x,y,z))
+//this.transform.position = this.transform.position + new vector3(moveSpeed,0,0) * Time.deltatime;
+//もしも現在位置のxの値が5よりも大きかったら
+//if(this.transform.position,x > 5)
+//{
+//  移動方向を反対にする
+//  movSpeed = -1 * moveSpeed;
+//}
+//もしも現在位置のxの値が5よりも小さかったら
+//if(this.transform.position.x < -5)
+//{
+//  移動方向を反対にする
+//  moveSpeed = -1 * moveSpeed;
+//}
