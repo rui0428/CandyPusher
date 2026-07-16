@@ -31,8 +31,13 @@ public class StageOut : MonoBehaviour
 
         if (Score >= 10)
         {
-            audioManager.PlayBGM2();
+            // != (右辺と左辺の値が同じで無かったら)
+            if(audioManager.BGMaudioSource.clip != audioManager.BGMaudioClips[1])
+            {
+            audioManager.BGMaudioSource.clip = audioManager.BGMaudioClips[1];
+            audioManager.BGMaudioSource.Play();
             Debug.Log("BGMが変更されました");
+            }
         }
     }
 }

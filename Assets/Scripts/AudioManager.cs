@@ -19,11 +19,6 @@ public class AudioManager : MonoBehaviour
 
         BGMaudioSource.clip = BGMaudioClips[0];
         BGMaudioSource.Play();
-    }
-
-    public void PlayBGM2()
-    {
-
         BGMaudioSource.clip = BGMaudioClips[1];
         BGMaudioSource.Play();
     }
