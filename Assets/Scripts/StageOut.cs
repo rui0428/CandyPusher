@@ -28,5 +28,11 @@ public class StageOut : MonoBehaviour
         Score = Score + 1;
         Debug.Log($"スコアが{Score}に増加しました");
         scoreTextTMP.text = $"Score:{Score}";
+
+        if (Score >= 10)
+        {
+            audioManager.PlayBGM2();
+            Debug.Log("BGMが変更されました");
+        }
     }
 }
