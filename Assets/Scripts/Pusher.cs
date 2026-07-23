@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class Pusher : MonoBehaviour
+//リファクタリング:MonoBehaviour -> スクリプトをゲームオブジェクトに張り付けて動かすための仕組み
 {
     //Public=アクセス修飾子 float=型 Speed=変数 1f=初期値 ;=文の終わり
     public float speed = 1f;
@@ -10,7 +11,7 @@ public class Pusher : MonoBehaviour
     void Start()
     {
         startPosition = this.transform.position;
-        Debug.Log("ゲームが開始したよ");
+        //Debug.Log("ゲームが開始したよ");
     }
     public Rigidbody rb;
     // Update is called once per frame

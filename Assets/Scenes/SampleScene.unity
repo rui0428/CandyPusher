@@ -340,7 +340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 918, y: 480}
+  m_AnchoredPosition: {x: 814.69995, y: 295}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &97312025
@@ -1950,7 +1950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 698.3, y: 509}
+  m_AnchoredPosition: {x: 595, y: 324}
   m_SizeDelta: {x: 5000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150725777
@@ -2693,7 +2693,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageOut
   scoreText: {fileID: 1604503942}
   scoreTextTMP: {fileID: 1150725777}
-  audioManager: {fileID: 1838034896}
 --- !u!65 &1687080488
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2821,7 +2820,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 762.92, y: 477.35}
+  m_AnchoredPosition: {x: 659.61993, y: 292.35}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1775910630
@@ -3049,7 +3048,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: acbf92aaf5496564e8cc0549089b5961, type: 3}
   seaudioSource: {fileID: 0}
   BGMaudioClips:
-  - {fileID: 8300000, guid: 8ffc421ab9f494c4fa5c112f9624abd2, type: 3}
+  - {fileID: 8300000, guid: 0db86de881eca954d890142f3c2c0143, type: 3}
   - {fileID: 8300000, guid: e108c6e79e0a5ef47ae71bde10fbf256, type: 3}
   BGMaudioSource: {fileID: 0}
 --- !u!1 &2000795349

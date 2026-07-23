@@ -3,6 +3,27 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    // AudioManagerをシングルトンクラスにする
+    // static -> クラス内で共通の値を持つ変数
+    // AudioManagerクラスがシーン上にあるか検知するための変数
+
+    static public AudioManager instance;
+
+    void Awake()
+    {
+        //もしも変数instanceの中身がnill
+        if(instance == null)
+        {
+            // 自身を変数instanceに登録
+            instance = this;
+        }else
+        {
+            //既に別のAudioManagerがいるので自身を破棄
+            Destroy(this.gameObject);
+        }
+    }
+
+
     public AudioClip[] audioClips;
     public AudioSource seaudioSource;
     public AudioClip[] BGMaudioClips;
@@ -16,10 +37,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBGM()
     {
-
         BGMaudioSource.clip = BGMaudioClips[0];
-        BGMaudioSource.Play();
-        BGMaudioSource.clip = BGMaudioClips[1];
         BGMaudioSource.Play();
     }
 

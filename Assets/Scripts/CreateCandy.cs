@@ -11,6 +11,7 @@ public class CreateCandy : MonoBehaviour
     public float Timer = 0f;
     private Vector3 startPosition;
     public Rigidbody InstantiatedCandy;
+
     // スペースキーが押されたら、CandyPrefabを生成する
     // 1,スペースが押された時の判定
     // 2,CandyPrefabを生成する
@@ -22,11 +23,13 @@ public class CreateCandy : MonoBehaviour
     {
         startPosition = this.transform.position;
     }
+
     // スペースが押された時の判定
     void Update()
     {
         float x = Mathf.Sin(Time.time * speed) * movepower;
         InstantiatedCandy.linearVelocity = new Vector3(x, 0, 0);
+
         // もしも接続状態のキーボードのスペースキーが押されたら
         // デバイス                  ：keyboard => キーボードに関する処理を呼び出す
         // デバイスの状態            ：current => 現在接続状態のキーボードを取得する
@@ -35,11 +38,13 @@ public class CreateCandy : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             // オブジェクトを生成する処理
-            Debug.Log("スペースキーが押された");
+            //Debug.Log("スペースキーが押された");
+
             // Instantiate => オブジェクトを実体化する関数
             // Instantiate(生成したいオブジェクト);
             // 変数InstantiateCandyを定義 初期値を生成したオブジェクトに設定
             GameObject InstantiatedCandy = Instantiate(candyPrefab);
+
             // 生成したオブジェクトの位置をこのスクリプトがアタッチされているオブジェクトと同じに変更
             InstantiatedCandy.transform.position = this.transform.position;            
         }
@@ -48,8 +53,9 @@ public class CreateCandy : MonoBehaviour
         {
             GameObject InstantiatedCandy = Instantiate(candyPrefab);
             InstantiatedCandy.transform.position = this.transform.position;
+
             // Debug Logを使い、逐一状況を確認できる状態にする        
-            Debug.Log("秒数が経過");
+            //Debug.Log("秒数が経過");
             Timer = 0;
         }
     }
