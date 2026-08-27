@@ -1,18 +1,23 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RhythmGame : MonoBehaviour
 {
-    // ==============================
+    // ========================================
     // AudioManager
-    // ==============================
+    // ========================================
 
-    // 既にあるAudioManagerを使用する
+    [Header("AudioManager")]
+
+    // HierarchyにあるAudioManager
     public AudioManager audioManager;
 
 
-    // ==============================
+    // ========================================
     // 拍
-    // ==============================
+    // ========================================
+
+    [Header("拍")]
 
     // 拍のPrefab
     public GameObject beatPrefab;
@@ -24,38 +29,46 @@ public class RhythmGame : MonoBehaviour
     public Transform judgementPoint;
 
 
-    // ==============================
-    // 拍の移動
-    // ==============================
+    // ========================================
+    // 拍の設定
+    // ========================================
+
+    [Header("拍の設定")]
+
+    // 何秒ごとに拍を出すか
+    public float beatInterval = 1.0f;
 
     // 拍が出現してから判定位置まで移動する時間
     public float moveTime = 1.0f;
 
 
-    // ==============================
+    // ========================================
     // 判定
-    // ==============================
+    // ========================================
 
-    // PERFECTの判定時間
+    [Header("判定")]
+
+    // PERFECTの判定範囲
     public float perfectTime = 0.05f;
 
-    // GREATの判定時間
+    // GREATの判定範囲
     public float greatTime = 0.10f;
 
-    // GOODの判定時間
+    // GOODの判定範囲
     public float goodTime = 0.18f;
 
 
-    // ==============================
-    // 拍を出すタイマー
-    // ==============================
+    // ========================================
+    // タイマー
+    // ========================================
 
+    // 拍を出すためのタイマー
     float beatTimer = 0.0f;
 
 
-    // ==============================
-    // ゲーム開始
-    // ==============================
+    // ========================================
+    // Start
+    // ========================================
 
     void Start()
     {
@@ -66,68 +79,72 @@ public class RhythmGame : MonoBehaviour
             return;
         }
 
-        // BGMを再生
-        audioManager.PlayBGM();
+        // 最初の拍までの時間
+        beatTimer = beatInterval;
     }
 
 
-    // ==============================
-    // 毎フレーム処理
-    // ==============================
+    // ========================================
+    // Update
+    // ========================================
 
     void Update()
     {
         // 拍を出す
-        CreateBeatTimer();
+        beatTimer -= Time.deltaTime;
 
-        // スペースキーが押されたら判定
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (beatTimer <= 0)
+        {
+            CreateBeat();
+
+            // タイマーをリセット
+            beatTimer = beatInterval;
+        }
+
+
+        // エンターキーを押したら判定
+        if(Keyboard.current.enterKey.wasPressedThisFrame)
         {
             JudgeBeat();
         }
     }
 
 
-    // ==============================
-    // 拍を出すタイマー
-    // ==============================
-
-    void CreateBeatTimer()
-    {
-        // 時間を進める
-        beatTimer += Time.deltaTime;
-
-
-        // 1秒経過したら拍を出す
-        if (beatTimer >= 1.0f)
-        {
-            CreateBeat();
-
-            // タイマーを0に戻す
-            beatTimer = 0.0f;
-        }
-    }
-
-
-    // ==============================
+    // ========================================
     // 拍を作る
-    // ==============================
+    // ========================================
 
     void CreateBeat()
     {
         // 拍を作る
         GameObject beatObject = Instantiate(
-            beatPrefab,
-            spawnPoint.position,
-            Quaternion.identity
-        );
+     beatPrefab,
+     spawnPoint.position,
+     Quaternion.identity,
+     spawnPoint.parent
+     );
 
 
         // Beatスクリプトを取得
         Beat beat = beatObject.GetComponent<Beat>();
 
 
-        // 拍の移動を設定
+        // Beatスクリプトがなかった場合
+        if (beat == null)
+        {
+            Debug.LogError(
+                "BeatPrefabにBeat.csが付いていません。"
+            );
+
+            return;
+        }
+
+
+        // 拍の移動時間を設定
+        beat.moveTime = moveTime;
+
+
+        // 拍のスタート位置と判定位置を設定
         beat.Setup(
             spawnPoint.position,
             judgementPoint.position
@@ -135,9 +152,9 @@ public class RhythmGame : MonoBehaviour
     }
 
 
-    // ==============================
-    // タイミング判定
-    // ==============================
+    // ========================================
+    // 判定
+    // ========================================
 
     void JudgeBeat()
     {
@@ -146,9 +163,11 @@ public class RhythmGame : MonoBehaviour
             audioManager.BGMaudioSource.time;
 
 
-        // 一番近い拍の時間を取得
+        // 1秒ごとの拍の中で、
+        // 一番近い拍の時間を探す
         float nearestBeat =
-            Mathf.Round(currentTime);
+            Mathf.Round(currentTime / beatInterval)
+            * beatInterval;
 
 
         // 拍との時間のズレ

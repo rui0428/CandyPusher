@@ -21,6 +21,12 @@ public class AudioManager : MonoBehaviour
             //既に別のAudioManagerがいるので自身を破棄
             Destroy(this.gameObject);
         }
+
+        //チャットGPTの変更点void startからawakeに
+        seaudioSource = this.gameObject.AddComponent<AudioSource>();
+        BGMaudioSource = this.gameObject.AddComponent<AudioSource>();
+        BGMaudioSource.loop = false;
+       
     }
 
 
@@ -40,13 +46,9 @@ public class AudioManager : MonoBehaviour
         BGMaudioSource.clip = BGMaudioClips[0];
         BGMaudioSource.Play();
     }
-
     void Start()
     {
-        seaudioSource = this.gameObject.AddComponent<AudioSource>();
-        BGMaudioSource = this.gameObject.AddComponent<AudioSource>();
-        BGMaudioSource.loop = true;
+        // BGMを再生
         PlayBGM();
     }
-
 }
