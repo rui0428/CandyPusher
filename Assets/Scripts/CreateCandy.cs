@@ -35,29 +35,29 @@ public class CreateCandy : MonoBehaviour
         // デバイスの状態            ：current => 現在接続状態のキーボードを取得する
         // デバイスの欲しいキーの情報：spaceKey => スペースキーの情報を取得する
         // キーの状態                ：wasPressedThisFrame => 押された瞬間かどうかの判定
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
+        //if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        //{
             // オブジェクトを生成する処理
             //Debug.Log("スペースキーが押された");
 
             // Instantiate => オブジェクトを実体化する関数
             // Instantiate(生成したいオブジェクト);
             // 変数InstantiateCandyを定義 初期値を生成したオブジェクトに設定
-            GameObject InstantiatedCandy = Instantiate(candyPrefab);
+            //GameObject InstantiatedCandy = Instantiate(candyPrefab);
 
             // 生成したオブジェクトの位置をこのスクリプトがアタッチされているオブジェクトと同じに変更
-            InstantiatedCandy.transform.position = this.transform.position;            
-        }
-        Timer += Time.deltaTime;
-        if(Timer>=1f)
-        {
-            GameObject InstantiatedCandy = Instantiate(candyPrefab);
-            InstantiatedCandy.transform.position = this.transform.position;
+            //InstantiatedCandy.transform.position = this.transform.position;            
+        //}
+        //Timer += Time.deltaTime;
+        //if(Timer>=1f)
+        //{
+            //GameObject InstantiatedCandy = Instantiate(candyPrefab);
+            //InstantiatedCandy.transform.position = this.transform.position;
 
             // Debug Logを使い、逐一状況を確認できる状態にする        
             //Debug.Log("秒数が経過");
-            Timer = 0;
-        }
+            //Timer = 0;
+        //}
     }
 }
 //一秒間に右側に1f動かしたい(右方向 → xの値を加算)
